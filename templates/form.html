@@ -1,0 +1,86 @@
+<html>
+    <head><title>Training</title>
+    <style>
+    body {text-align: center; margin-top: 100px;}
+    input {margin-bottom: 10px; margin-left: 5px;}  
+    </style>
+    <link href="static/pnv/build/css/demo.css" rel="stylesheet">
+    <link href="static/pnv/build/css/intlTelInput.css" rel="stylesheet">
+    </head>
+    <body>
+        <form name="myForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <!-- Name -->
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" name="fname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter FName">
+            </div>
+            <div class="form-group">
+                <!-- Last Name -->
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="text" name="lname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter LName">
+            </div>
+            <div class="form-group">
+                <!-- Email -->
+                <label for="exampleInputEmail1">Email</label>
+                <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <!-- Phone Number -->
+                <label for="exampleInputEmail1">Phone Number</label>
+                <input type="tel" name="phonenum" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone">
+            </div>
+            <div class="form-group">
+                <!-- Password -->
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-check">
+                <!-- Comnfirm Pass -->
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="confirmpass" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+            </div>
+            <input type="submit">
+          </form>
+        
+        <script>
+            function validateForm() {
+                var firstName = document.forms["myForm"]["fname"].value;
+                var lastName = document.forms["myForm"]["lname"].value;
+                var email = document.forms["myForm"]["email"].value;
+                var phoneNumber = document.forms["myForm"]["phonenum"].value;
+                var password = document.forms["myForm"]["pass"].value;
+                var confirmpass = document.forms["myForm"]['confirmpass'].value;
+                
+                if (firstName.length < 3 || firstName.length > 10) {
+                    alert("First name should be between 3 and 10 characters.");
+                    return false;
+                }
+                
+                if (lastName.length < 3 || lastName.length > 10) {
+                    alert("Last name should be between 3 and 10 characters.");
+                    return false;
+                }
+                
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.match(emailRegex)) {
+                    alert("Invalid email format.");
+                    return false;
+                }
+                if (password !== confirmpass)
+                {
+                    alert("Password and Confirm Password do not match!")
+                    return false;
+                }
+                
+                var phoneRegex = /^\d{10}$/;
+                if (!phoneNumber.match(phoneRegex)) {
+                    alert("Phone number should be 10 digits.");
+                    return false;
+                }
+                
+                 // Submit the form if all validations pass
+                return true;
+            }
+            </script>
+    </body>
+</html>
